@@ -667,7 +667,7 @@ local function PresentMonsters()
                 if defTech.type == 0 then
                     lib_helpers.TextC(false, 0, "    ")
                 else
-                    lib_helpers.TextC(false, 0xFFFF00FF,
+                    lib_helpers.TextC(false, 0xFF00CCFF,
                         defTech.name .. defTech.level .. string.rep(" ", 2 - #tostring(defTech.level)) .. " ")
                 end
 

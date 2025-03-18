@@ -20,7 +20,7 @@ return
     mhpNoTitleBar = "NoTitleBar",
     mhpNoResize = "",
     mhpNoMove = "",
-    mhpTransparentWindow = true,
+    mhpTransparentWindow = false,
 
     targetEnableWindow = true,
     targetChanged = false,

@@ -19,7 +19,7 @@ return
     mhpH = 350,
     mhpNoTitleBar = "NoTitleBar",
     mhpNoResize = "",
-    mhpNoMove = "NoMove",
+    mhpNoMove = "",
     mhpTransparentWindow = false,
 
     targetEnableWindow = true,

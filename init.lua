@@ -648,7 +648,6 @@ local function PresentMonsters()
             local mHPMax = monster.HPMax
 
             lib_helpers.TextC(true, monster.color, monster.name)
-            lib_helpers.Text(false, math.floor(monster.distance))
             imgui.NextColumn()
 
             if options.showMonsterID == true then

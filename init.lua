@@ -313,7 +313,7 @@ local function GetMonsterDataDeRolLe(monster)
     return monster
 end
 
--- The body, skull, and shell segments all have Barba Ray's unitxt ID. The game doesn't load the 
+-- The body, skull, and shell segments all have Barba Ray's unitxt ID. The game doesn't load the
 -- animations aka movement BP into a static address like it does for De Rol Le, so we
 -- have to differentiate the objects by their class type.
 local function GetMonsterDataBarbaRay(monster)
@@ -538,6 +538,7 @@ local function GetMonsterList()
             local xDist = math.abs(pPosX - monster.posX)
             local zDist = math.abs(pPosZ - monster.posZ)
             local tDist = math.sqrt(xDist ^ 2 + zDist ^ 2)
+            monster.distance = tDist
 
             if cfgMonsters.maxDistance ~= 0 and tDist > cfgMonsters.maxDistance then
                 monster.display = false
@@ -583,6 +584,11 @@ local function GetMonsterList()
         end
         i = i + 1
     end
+
+    -- 近い順に表示するためにプレイヤーからの距離でソートする
+    table.sort(monsterList, function(monster1, monster2)
+        return monster1.distance < monster2.distance
+    end)
 
     return monsterList
 end
@@ -642,6 +648,7 @@ local function PresentMonsters()
             local mHPMax = monster.HPMax
 
             lib_helpers.TextC(true, monster.color, monster.name)
+            lib_helpers.Text(false, math.floor(monster.distance))
             imgui.NextColumn()
 
             if options.showMonsterID == true then

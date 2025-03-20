@@ -1027,6 +1027,11 @@ local function PresentTargetMonsterWindow()
     end
 end
 
+local function isDungeonFloor()
+    local floor = lib_characters.GetCurrentFloorSelf()
+    return (floor ~= 0) and (floor ~= 15)
+end
+
 local function present()
     if _EntityArray == 0 then
         -- Get the address of the entity array from one of the instructions that references it.
@@ -1056,6 +1061,7 @@ local function present()
         and (options.mhpHideWhenMenu == false or lib_menu.IsMenuOpen() == false)
         and (options.mhpHideWhenSymbolChat == false or lib_menu.IsSymbolChatOpen() == false)
         and (options.mhpHideWhenMenuUnavailable == false or lib_menu.IsMenuUnavailable() == false)
+        and (isDungeonFloor())
     then
         if firstPresent or options.mhpChanged then
             options.mhpChanged = false
